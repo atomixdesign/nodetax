@@ -4,6 +4,8 @@
 name: Node.js CI
 
 on:
+  release:
+    branches: [ master ]
   push:
     branches: [ master ]
   pull_request:
@@ -12,22 +14,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '14.x'
       - run: yarn install
       - run: yarn test
-        
-  deploy:
-    if: success()
-    runs-on: ubuntu-latest
-    steps:
       - run: yarn publish
+        if: success() && github.event_name === 'release'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
