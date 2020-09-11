@@ -23,6 +23,6 @@ jobs:
       - run: yarn install
       - run: yarn test
       - run: yarn publish
-        if: success() && github.event_name === 'release'
+        if: success() && github.event_name == 'release'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
