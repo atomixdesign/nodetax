@@ -6,7 +6,6 @@ name: Node.js CI
 on:
   release:
     types: [ created ]
-    branches: [ master ]
   push:
     branches: [ master ]
   pull_request:
@@ -45,6 +44,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
