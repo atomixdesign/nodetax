@@ -5,8 +5,8 @@
   "homepage": "https://github.com/atomixdesign/nodetax",
   "private": false,
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/atomixdesign/nodetax.git"
+    "type": "git",
+    "url": "git+https://github.com/atomixdesign/nodetax.git"
   },
   "author": "Jack Hillman <jack@atomix.com.au> (https://www.atomix.com.au)",
   "source": "src/index.ts",
@@ -26,5 +26,8 @@
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0-pre.62",
     "typescript": "^4.0.2"
+  },
+  "bugs": {
+    "url": "https://github.com/atomixdesign/nodetax/issues"
   }
 }
